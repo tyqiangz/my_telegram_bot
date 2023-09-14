@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  zip_files:
+    platform: linux/amd64
+    image: zip_python_pkgs:1.0
+    container_name: zip_python_pkgs
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # ports:
+    #   - 8556:8556
+    volumes:
+      - type: bind
+        source: ./zip_packages
+        target: /src
