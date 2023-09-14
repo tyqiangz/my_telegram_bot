@@ -1,16 +1,16 @@
 version: "3"
 
 services:
-  zip_files:
-    platform: linux/amd64
-    image: zip_python_pkgs:1.0
-    container_name: zip_python_pkgs
+  create_lambda_zip:
+    image: create_lambda_layer_zip:1.0
+    container_name: create_lambda_layer_zip
     build:
       context: .
-      dockerfile: Dockerfile
-    # ports:
-    #   - 8556:8556
+    
+    ports:
+      - 8556:8556
+
     volumes:
       - type: bind
-        source: ./zip_packages
+        source: ./
         target: /src
