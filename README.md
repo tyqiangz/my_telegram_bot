@@ -13,3 +13,5 @@ E.g. `https://api.telegram.org/bot1234567890:qlwejlkmfsldfk-12klsd/getMe`
 5. Copy the python files `main.py` and include a zip file containing all the required python libraries in `requirement.txt` in AWS Lambda layer.
 6. Set webhook for the bot as the AWS Lambda function url, `https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url={AWS_LAMBDA_FUNCTION_URL}`, e.g.
 `https://api.telegram.org/bot1234567890:qlwejlkmfsldfk-12klsd/setWebhook?url= https://aklhdaklsnalskdmla.lambda-url.us-east-1.on.aws/`
+
+Refer to: https://github.com/jojo786/Sample-Python-Telegram-Bot-AWS-Serverless-PTBv20/blob/main/ptb/ptb_lambda.py
