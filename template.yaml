@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  my_telegram_bot
+
+  Sample SAM Template for my_telegram_bot
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 10
+    MemorySize: 128
+
+Resources:
+  TelegramBotFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      Description: A personal assistant telegram bot
+      FunctionName: my_telegram_bot
+      CodeUri: src/
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.10
+      Architectures:
+      - x86_64
+      # Environment:
+      #   Variables:
+      #     BOT_TOKEN: "MY_BOT_TOKEN"
+      FunctionUrlConfig: # More info about Function URL Config: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-functionurlconfig.html
+        AuthType: NONE
+      
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  TelegramBotFunction:
+    Description: "Lambda Function URL for Telegram bot API"
+    Value:
+      Fn::GetAtt: TelegramBotFunctionUrl.FunctionUrl
