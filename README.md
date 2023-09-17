@@ -33,7 +33,7 @@ E.g. `https://api.telegram.org/bot1234567890:qlwejlkmfsldfk-12klsd/getMe`
 
 Initial template of the lambda function for the bot is taken from: https://github.com/eternnoir/pyTelegramBotAPI/blob/master/examples/serverless/aws_lambda_function.py
 
-The library `pyTelegramBotAPI`(https://github.com/eternnoir/pyTelegramBotAPI) is chosen over `python-telegram-bot`(https://github.com/python-telegram-bot/python-telegram-bot) because it has better documentation for writing tests for the bot and logical operations on the messages are a lot more comprehensive (check out Filters in `pyTelegramBotAPI`). 
+There are two main libraries for developing telegram bots `python-telegram-bot` (https://github.com/python-telegram-bot/python-telegram-bot) and `pyTelegramBotAPI`(https://github.com/eternnoir/pyTelegramBotAPI). The library `python-telegram-bot` is chosen because the logical operations on the messages are a lot more comprehensive (check out Filters in `python-telegram-bot`). 
 
 TODO:
 - [ ] Add unit tests to `./tests` to test the telegram bot.
