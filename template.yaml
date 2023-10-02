@@ -25,6 +25,7 @@ Resources:
       # Environment:
       #   Variables:
       #     BOT_TOKEN: "MY_BOT_TOKEN"
+      #     CHAT_ID: 1234567890
       FunctionUrlConfig: # More info about Function URL Config: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-functionurlconfig.html
         AuthType: NONE
       
