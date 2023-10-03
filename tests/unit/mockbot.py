@@ -1,3 +1,5 @@
+# run this file to get a telegram bot running.
+
 from pathlib import Path
 import sys
 from telegram import Update
