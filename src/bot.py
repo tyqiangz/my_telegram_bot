@@ -67,13 +67,14 @@ def _leetcode() -> str:
     data = get_leetcode_daily_qn()
     date = data["data"]["activeDailyCodingChallengeQuestion"]["date"]
     link = data["data"]["activeDailyCodingChallengeQuestion"]["link"]
+    title = data["data"]["activeDailyCodingChallengeQuestion"]["question"]["title"]
 
-    return f"""Leetcode problem for the day ({date}) is {leetcode_base_url + link}"""
+    return f"""Leetcode problem for the day ({date}) is {title}.\n{leetcode_base_url + link}"""
 
 start_handler = CommandHandler('start', start)
 application.add_handler(start_handler)
 
-leetcode_handler = CommandHandler('lc', start)
+leetcode_handler = CommandHandler('lc', leetcode)
 application.add_handler(leetcode_handler)
 
 echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
