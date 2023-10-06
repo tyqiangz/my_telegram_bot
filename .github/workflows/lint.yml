@@ -1,0 +1,27 @@
+name: Formatting python code with yapf
+
+on:
+  push:
+    paths:
+    - '**.py'
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: autoyapf
+      id: autoyapf
+      uses: mritunjaysharma394/autoyapf@v2
+      with:
+        args: --style pep8 --no-local-style --verbose --recursive --diff --parallel .
+         
