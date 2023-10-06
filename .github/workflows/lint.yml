@@ -1,9 +1,6 @@
 name: Formatting python code with yapf
 
-on:
-  push:
-    paths:
-    - '**.py'
+on: [push]
 
 jobs:
   static:
