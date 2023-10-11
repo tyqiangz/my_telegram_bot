@@ -16,4 +16,5 @@ def test_start():
     'Hello, I'm your personal assistant <3 How can I help you?'
     as output.
     """
-    assert _start() == "Hello, I'm your personal assistant <3 How can I help you?"
+    assert _start(
+    ) == "Hello, I'm your personal assistant <3 How can I help you?"

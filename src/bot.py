@@ -26,18 +26,16 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     The bot will reply `"I'm a bot, please talk to me!"` when the message `"/start"` is received.
     """
-    await context.bot.send_message(
-        chat_id=update.effective_chat.id, text=_start()
-    )
+    await context.bot.send_message(chat_id=update.effective_chat.id,
+                                   text=_start())
 
 
 async def leetcode(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     The bot will reply the leetcode question of the day.
     """
-    await context.bot.send_message(
-        chat_id=update.effective_chat.id, text=_leetcode()
-    )
+    await context.bot.send_message(chat_id=update.effective_chat.id,
+                                   text=_leetcode())
 
 
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -45,9 +43,8 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     The bot will reply whatever message that was sent to it.
     """
     response = _echo(update.message.text)
-    await context.bot.send_message(
-        chat_id=update.effective_chat.id, text=response
-    )
+    await context.bot.send_message(chat_id=update.effective_chat.id,
+                                   text=response)
 
 
 def _echo(msg: str) -> str:
@@ -89,12 +86,10 @@ def get_leetcode_daily_qn():
         "Content-Type": "application/json",
     }
 
-    response = requests.post(
-        "https://leetcode.com/graphql",
-        headers=headers,
-        data=json.dumps(query),
-        timeout=10
-    )
+    response = requests.post("https://leetcode.com/graphql",
+                             headers=headers,
+                             data=json.dumps(query),
+                             timeout=10)
     data = json.loads(response.text)
     return data
 

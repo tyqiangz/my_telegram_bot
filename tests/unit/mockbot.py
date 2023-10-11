@@ -3,5 +3,4 @@
 from telegram import Update
 from ...src.bot import application
 
-
 application.run_polling(allowed_updates=Update.ALL_TYPES)
