@@ -1,8 +1,8 @@
 """
-This script specifies all the telegram inputs that the chatbot 
+This script specifies all the telegram inputs that the chatbot
 would accept and give an output.
 
-There should be a function of the form 
+There should be a function of the form
 `func(update: Update, context: ContextTypes.DEFAULT_TYPE)`
 that specifies how the telegram bot will react to the input.
 
@@ -16,7 +16,8 @@ import os
 import json
 import requests
 from telegram import Update
-from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler, filters
+from telegram.ext import ApplicationBuilder, ContextTypes, \
+    CommandHandler, MessageHandler, filters
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 application = ApplicationBuilder().token(BOT_TOKEN).build()
@@ -24,7 +25,8 @@ application = ApplicationBuilder().token(BOT_TOKEN).build()
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
-    The bot will reply `"I'm a bot, please talk to me!"` when the message `"/start"` is received.
+    The bot will reply `"I'm a bot, please talk to me!"` 
+    when the message `"/start"` is received.
     """
     await context.bot.send_message(chat_id=update.effective_chat.id,
                                    text=_start())
@@ -63,12 +65,12 @@ def get_leetcode_daily_qn():
     query = {
         "query":
         """
-            query questionOfToday { 
-                activeDailyCodingChallengeQuestion { 
+            query questionOfToday {
+                activeDailyCodingChallengeQuestion {
                     date
                     userStatus
                     link
-                    question { 
+                    question {
                         acRate
                         difficulty
                         freqBar
@@ -102,7 +104,10 @@ def _leetcode() -> str:
     title = data["data"]["activeDailyCodingChallengeQuestion"]["question"][
         "title"]
 
-    return f"""Leetcode problem for the day ({date}) is {title}.\n{leetcode_base_url + link}"""
+    output_string = f"Leetcode problem for the day ({date}) is {title}.\n"
+    output_string += leetcode_base_url + link
+
+    return output_string
 
 
 start_handler = CommandHandler('start', start)
