@@ -18,7 +18,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: autoyapf
       id: autoyapf
-      uses: mritunjaysharma394/autoyapf@v2
+      uses: AlexanderMelde/yapf-action@master
       with:
         args: --style pep8 --no-local-style --verbose --recursive --diff --parallel .
          
