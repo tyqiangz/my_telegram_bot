@@ -25,7 +25,7 @@ application = ApplicationBuilder().token(BOT_TOKEN).build()
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
-    The bot will reply `"I'm a bot, please talk to me!"` 
+    The bot will reply `"I'm a bot, please talk to me!"`
     when the message `"/start"` is received.
     """
     await context.bot.send_message(chat_id=update.effective_chat.id,
