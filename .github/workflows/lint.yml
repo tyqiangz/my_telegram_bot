@@ -16,9 +16,8 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: autoyapf
-      id: autoyapf
+    - name: Run YAPF to test if python code is correctly formatted
       uses: AlexanderMelde/yapf-action@master
       with:
-        args: --style pep8 --no-local-style --verbose --recursive --diff --parallel .
+        args: --style pep8 --no-local-style --verbose --recursive --diff --parallel
          
