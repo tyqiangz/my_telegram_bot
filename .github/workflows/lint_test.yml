@@ -43,5 +43,5 @@ jobs:
         pip install pytest==7.4.2 pytest-md==0.2.0 python-telegram-bot==20.5
     - name: Run unit tests
       run: |
-        export BOT_TOKEN=${{ secret.BOT_TOKEN }}
+        export BOT_TOKEN=${{ secrets.BOT_TOKEN }}
         pytest ./tests/unit/
