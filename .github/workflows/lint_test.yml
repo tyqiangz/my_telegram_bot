@@ -26,6 +26,7 @@ jobs:
         path: "src"
 
   test:
+    needs: static
     runs-on: ubuntu-latest
     strategy:
       matrix:
