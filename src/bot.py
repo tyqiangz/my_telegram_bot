@@ -59,7 +59,7 @@ def _start() -> str:
 
 def get_leetcode_daily_qn():
     """
-    Obtains the Leetcode question of the day from Leetcode's Graphql endpoint
+    Obtains the Leetcode question of the day from Leetcode's GraphQL endpoint
     and returns the result as a json object.
     """
     query = {

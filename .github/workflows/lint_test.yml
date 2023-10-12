@@ -24,3 +24,23 @@ jobs:
       uses: py-actions/flake8@v2
       with: 
         path: "src"
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        pip install pytest==7.4.2 pytest-md==0.2.0 python-telegram-bot==20.5
+    - name: Run unit tests
+        export BOT_TOKEN=${{ secret.BOT_TOKEN }}
+        pytest ./tests/unit/
