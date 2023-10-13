@@ -1,7 +1,7 @@
 """
 This script tests all the 
 """
-from ...src.bot import _echo, _start
+from ...my_telegram_bot.bot import _echo, _start
 
 
 def test_echo():
