@@ -66,6 +66,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
     - name: Build the AWS SAM application
-      run: sam build
+      run: sam build --template ./template.yaml
     - name: Deploy to AWS Lambda
       run: sam deploy
