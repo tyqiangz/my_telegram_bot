@@ -23,7 +23,7 @@ jobs:
     - name: Run flake8 to check for static errors
       uses: py-actions/flake8@v2
       with: 
-        path: "src"
+        path: "my_telegram_bot"
 
   test:
     needs: static
@@ -42,9 +42,9 @@ jobs:
     - name: Install dependencies
       run: |
         # install requirements
-        pip install -r ./src/requirements.txt
+        pip install -r ./my_telegram_bot/requirements.txt
         # install dev requirements
-        pip install -r ./tests/requirements.txt
+        pip install -r ./my_telegram_bot/requirements.txt
     - name: Run unit tests
       run: |
         export BOT_TOKEN=${{ secrets.BOT_TOKEN }}
