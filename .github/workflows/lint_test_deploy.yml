@@ -44,7 +44,7 @@ jobs:
         # install requirements
         pip install -r ./my_telegram_bot/requirements.txt
         # install dev requirements
-        pip install -r ./my_telegram_bot/requirements.txt
+        pip install -r ./tests/requirements.txt
     - name: Run unit tests
       run: |
         export BOT_TOKEN=${{ secrets.BOT_TOKEN }}
