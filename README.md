@@ -5,21 +5,7 @@ A telegram bot that gives me information I require about things that I care abou
 The telegram bot is deployed on AWS Lambda using the [AWS Serverless Application Model](https://aws.amazon.com/serverless/sam/) CLI tool.
 
 Learn how to use AWS SAM here: https://catalog.workshops.aws/complete-aws-sam/en-US.
-
-- `sam deploy --guided` to deploy it to AWS Lambda. The following commands will appear in the command line, answer them as follows:
-  ```
-  Stack Name [my-telegram-bot]: 
-  AWS Region [us-east-1]:
-  #Shows you resources changes to be deployed and require a 'Y' to initiate deploy
-  Confirm changes before deploy [Y/n]: Y
-  #SAM needs permission to be able to create roles to connect to the resources in your template
-  Allow SAM CLI IAM role creation [Y/n]: Y
-  #Preserves the state of previously provisioned resources when an operation fails
-  Disable rollback [y/N]: N
-  Save arguments to configuration file [Y/n]:
-  SAM configuration file [samconfig.toml]:
-  SAM configuration environment [default]:
-  ```
+Documentation: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-command-reference.html
 
 ## Setup
 1. Create a telegram bot on Telegram by messaging BotFather at https://t.me/BotFather or @BotFather.
@@ -37,7 +23,7 @@ There are two main libraries for developing telegram bots `python-telegram-bot` 
 
 TODO:
 - [x] Add unit tests to `./tests` to test the telegram bot.
-- [ ] Setup GitHub Actions to run all unit tests when code is pushed onto repo.
+- [x] Setup GitHub Actions to run all unit tests when code is pushed onto repo.
 - [ ] Add integration tests to `./events/events.json` to test the lambda function.
 - [ ] Add cronjob to bot such that Leetcode question of the day will be sent at GMT+0 everyday.
 - [ ] Add cronjob to bot such that Monetary Authority of Singapore (MAS)'s T-Bills details will be sent when an auction closes.
