@@ -3,7 +3,6 @@ name: Formatting python code with yapf
 on: [push]
 
 env:
-  PYTHON_VERSION: ["3.8", "3.9", "3.10"]
   SAM_TEMPLATE: template.yaml
 
 jobs:
@@ -11,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ${{ env.PYTHON_VERSION }}
+        python-version: ["3.8", "3.9", "3.10"]
     steps:
     - uses: actions/checkout@v3
       with:
@@ -34,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ${{ env.PYTHON_VERSION }}
+        python-version: ["3.8", "3.9", "3.10"]
     steps:
     - uses: actions/checkout@v3
       with:

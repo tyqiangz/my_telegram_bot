@@ -19,7 +19,6 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, \
     CommandHandler, MessageHandler, filters
 
-os.environ["BOT_TOKEN"] = "6575912908:AAFemMI9Kuc6ESJcmNyfMaId-9Pf6kCQKtA"
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 application = ApplicationBuilder().token(BOT_TOKEN).build()
 
