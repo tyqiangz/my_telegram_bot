@@ -17,8 +17,7 @@ import json
 import requests
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, \
-    CommandHandler, MessageHandler, filters
-
+    CommandHandler
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 application = ApplicationBuilder().token(BOT_TOKEN).build()
 
@@ -39,7 +38,8 @@ async def leetcode(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id,
                                    text=_leetcode(),
                                    parse_mode='Markdown')
-    
+
+
 async def tbills(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     The bot will reply the recent T-Bills info
@@ -121,8 +121,10 @@ def _leetcode() -> str:
 
     return message
 
+
 def _tbills() -> str:
     return "Coming soon!"
+
 
 start_handler = CommandHandler('start', start)
 application.add_handler(start_handler)
