@@ -37,7 +37,7 @@ async def leetcode(update: Update, context: ContextTypes.DEFAULT_TYPE):
     The bot will reply the leetcode question of the day.
     """
     await context.bot.send_message(chat_id=update.effective_chat.id,
-                                   text=_leetcode(), 
+                                   text=_leetcode(),
                                    parse_mode='Markdown')
 
 
