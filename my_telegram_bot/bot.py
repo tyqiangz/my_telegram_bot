@@ -18,6 +18,7 @@ import requests
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, \
     CommandHandler
+
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 application = ApplicationBuilder().token(BOT_TOKEN).build()
 
