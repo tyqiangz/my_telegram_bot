@@ -2,12 +2,16 @@ name: Formatting python code with yapf
 
 on: [push]
 
+env:
+  PYTHON_VERSION: ["3.8", "3.9", "3.10"]
+  SAM_TEMPLATE: template.yaml
+
 jobs:
   static:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: ${{ env.PYTHON_VERSION }}
     steps:
     - uses: actions/checkout@v3
       with:
@@ -30,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: ${{ env.PYTHON_VERSION }}
     steps:
     - uses: actions/checkout@v3
       with:
@@ -55,6 +59,9 @@ jobs:
     # if: success() && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
     - name: Install AWS Serverless Application Model (SAM) CLI tool
       uses: aws-actions/setup-sam@v2
       with:
@@ -66,6 +73,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
     - name: Build the AWS SAM application
-      run: sam build --template ./template.yaml --use-container
+      run: sam build --template ${SAM_TEMPLATE} --use-container
     - name: Deploy to AWS Lambda
       run: sam deploy

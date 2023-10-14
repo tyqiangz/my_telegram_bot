@@ -38,7 +38,8 @@ async def leetcode(update: Update, context: ContextTypes.DEFAULT_TYPE):
     The bot will reply the leetcode question of the day.
     """
     await context.bot.send_message(chat_id=update.effective_chat.id,
-                                   text=_leetcode())
+                                   text=_leetcode(), 
+                                   parse_mode='Markdown')
 
 
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -102,10 +103,10 @@ def construct_leetcode_msg(title: str, date: str, link: str, difficulty: str):
 
     assert link[0] == "/", "`link` should start with a '/' character"
 
-    message = "👨‍💻**LC Daily Question**👩‍💻\n"
-    message += f"**Date:** {date}\n"
-    message += f"**Title:** {title}\n"
-    message += f"**Difficulty:** {difficulty}\n"
+    message = "👨‍💻*LC Daily Question*👩‍💻\n"
+    message += f"*Date:* {date}\n"
+    message += f"*Title:* {title}\n"
+    message += f"*Difficulty:* {difficulty}\n"
     message += leetcode_base_url + link
     return message
 
