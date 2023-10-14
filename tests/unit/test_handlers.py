@@ -1,14 +1,7 @@
 """
 This script tests all the 
 """
-from ...my_telegram_bot.bot import _echo, _start
-
-
-def test_echo():
-    """Test if the `_echo` function will return
-    any input string as output.
-    """
-    assert _echo("hello") == "hello"
+from ...my_telegram_bot.bot import _start
 
 
 def test_start():
