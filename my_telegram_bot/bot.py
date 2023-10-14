@@ -17,7 +17,7 @@ import json
 import requests
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, \
-    CommandHandler, MessageHandler, filters
+    CommandHandler
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 application = ApplicationBuilder().token(BOT_TOKEN).build()
@@ -41,21 +41,17 @@ async def leetcode(update: Update, context: ContextTypes.DEFAULT_TYPE):
                                    parse_mode='Markdown')
 
 
-async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def tbills(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
-    The bot will reply whatever message that was sent to it.
+    The bot will reply the recent T-Bills info
     """
-    response = _echo(update.message.text)
     await context.bot.send_message(chat_id=update.effective_chat.id,
-                                   text=response)
-
-
-def _echo(msg: str) -> str:
-    return msg
+                                   text=_tbills(),
+                                   parse_mode='Markdown')
 
 
 def _start() -> str:
-    return "Hello, I'm your personal assistant <3 How can I help you?"
+    return "Hello, I'm your personal assistant 😊 How can I help you?"
 
 
 def get_leetcode_daily_qn():
@@ -127,11 +123,15 @@ def _leetcode() -> str:
     return message
 
 
+def _tbills() -> str:
+    return "Coming soon!"
+
+
 start_handler = CommandHandler('start', start)
 application.add_handler(start_handler)
 
 leetcode_handler = CommandHandler('lc', leetcode)
 application.add_handler(leetcode_handler)
 
-echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
-application.add_handler(echo_handler)
+tbills_handler = CommandHandler('tbills', tbills)
+application.add_handler(tbills_handler)
