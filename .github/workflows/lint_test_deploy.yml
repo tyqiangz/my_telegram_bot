@@ -74,4 +74,4 @@ jobs:
     - name: Build the AWS SAM application
       run: sam build --template ${SAM_TEMPLATE} --use-container
     - name: Deploy to AWS Lambda
-      run: sam deploy
+      run: sam deploy --no-fail-on-empty-changeset
