@@ -18,6 +18,10 @@ import requests
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, \
     CommandHandler
+import boto3
+import datetime
+import pandas as pd
+from bisect import bisect_left
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 application = ApplicationBuilder().token(BOT_TOKEN).build()
@@ -124,7 +128,62 @@ def _leetcode() -> str:
 
 
 def _tbills() -> str:
-    return "Coming soon!"
+    filename = 'my-telegram-bot/T-Bills Issuance Calendars/SGS Treasury Bills - T-BILLS 2023.csv'
+    output_filename = 's3_download.csv'
+
+    s3 = boto3.client('s3')
+    s3.download_file(os.environ["S3_BUCKET_NAME"], filename, output_filename)
+
+    df = pd.read_csv(output_filename,
+                     parse_dates=[
+                         "Announcement Date", "Auction Date", "Issue Date",
+                         "Maturity Date"
+                     ],
+                     dayfirst=True)
+
+    df = df[df["Tenor"] == "6-month"]
+    last_tbill_idx = bisect_left(a=df["Auction Date"],
+                                 x=datetime.datetime.now() +
+                                 datetime.timedelta(hours=8))
+    last_tbill_idx
+
+    last_tbill = df.iloc[last_tbill_idx - 1, :]
+    # next_tbill = df.iloc[last_tbill_idx, :]
+
+    message = get_tbills_msg(
+        announcement_date=last_tbill["Announcement Date"],
+        auction_date=last_tbill["Auction Date"],
+        issue_date=last_tbill["Issue Date"],
+        maturity_date=last_tbill["Maturity Date"],
+        issue_code=last_tbill["Issue Code"],
+        isin_code=last_tbill["ISIN Code"],
+    )
+
+    message = "*Previous 6 mth T-Bills*\n\n" + message
+
+    return message
+
+
+def get_tbills_msg(announcement_date: datetime.datetime,
+                   auction_date: datetime.datetime,
+                   issue_date: datetime.datetime,
+                   maturity_date: datetime.datetime, issue_code: str,
+                   isin_code: str) -> str:
+
+    website = "https://www.mas.gov.sg/bonds-and-bills/auctions-and-issuance-calendar/auction-t-bill?"
+    website += f"issue_code={issue_code}"
+    website += f"&issue_date={issue_date.strftime('%Y-%m-%d')}"
+
+    message = "*Announcement Date:* " + announcement_date.strftime(
+        "%Y/%m/%d") + "\n"
+    message += "*Auction Date:* " + auction_date.strftime("%Y/%m/%d") + "\n"
+    message += "*Issue Date:* " + issue_date.strftime("%Y/%m/%d") + "\n"
+    message += "*Maturity  Date:* " + maturity_date.strftime("%Y/%m/%d") + "\n"
+    message += "*issue_code:* " + issue_code + "\n"
+    message += "*ISIN code:* " + isin_code + "\n"
+    message += "*Website:* " + website
+
+    return message
 
 
 start_handler = CommandHandler('start', start)

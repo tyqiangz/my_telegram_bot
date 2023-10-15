@@ -11,3 +11,11 @@ def test_start():
     """
     assert _start(
     ) == "Hello, I'm your personal assistant 😊 How can I help you?"
+
+
+def test_leetcode():
+    assert True == True
+
+
+def test_tbills():
+    assert True == True
