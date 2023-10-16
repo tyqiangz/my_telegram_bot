@@ -8,7 +8,7 @@ import json
 import asyncio
 import logging
 from telegram import Update
-from .bot import application
+from bot import application
 
 
 def lambda_handler(event, context):

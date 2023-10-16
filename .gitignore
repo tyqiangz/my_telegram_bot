@@ -167,3 +167,5 @@ tmp.py
 .mypy_cache/
 .venv
 .cdk.out/
+
+.github/workflows/pipeline.yaml
