@@ -130,7 +130,7 @@ def _leetcode() -> str:
 def _tbills() -> str:
     filename = "my-telegram-bot/" + \
         "T-Bills Issuance Calendars/SGS Treasury Bills - T-BILLS 2023.csv"
-    output_filename = 's3_download.csv'
+    output_filename = '/tmp/    s3_download.csv'
 
     s3 = boto3.client('s3')
     s3.download_file(os.environ["S3_BUCKET_NAME"], filename, output_filename)
