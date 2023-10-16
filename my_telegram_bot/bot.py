@@ -128,7 +128,8 @@ def _leetcode() -> str:
 
 
 def _tbills() -> str:
-    filename = 'my-telegram-bot/T-Bills Issuance Calendars/SGS Treasury Bills - T-BILLS 2023.csv'
+    filename = "my-telegram-bot/" + \
+        "T-Bills Issuance Calendars/SGS Treasury Bills - T-BILLS 2023.csv"
     output_filename = 's3_download.csv'
 
     s3 = boto3.client('s3')
@@ -170,7 +171,8 @@ def get_tbills_msg(announcement_date: datetime.datetime,
                    maturity_date: datetime.datetime, issue_code: str,
                    isin_code: str) -> str:
 
-    website = "https://www.mas.gov.sg/bonds-and-bills/auctions-and-issuance-calendar/auction-t-bill?"
+    website = "https://www.mas.gov.sg/bonds-and-bills" + \
+        "/auctions-and-issuance-calendar/auction-t-bill?"
     website += f"issue_code={issue_code}"
     website += f"&issue_date={issue_date.strftime('%Y-%m-%d')}"
 
