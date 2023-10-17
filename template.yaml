@@ -29,7 +29,7 @@ Resources:
       FunctionUrlConfig: # More info about Function URL Config: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-functionurlconfig.html
         AuthType: NONE
       Policies:
-      # Give the  Lambda service access to read from S3 buckets
+      # Give the Lambda service access to read from S3 buckets
       - AmazonS3ReadOnlyAccessInfo
       
 Outputs:
