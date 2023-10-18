@@ -181,8 +181,8 @@ def get_tbills_msg(announcement_date: datetime.datetime,
 
     website = "https://www.mas.gov.sg/bonds-and-bills" + \
         "/auctions-and-issuance-calendar/auction-t-bill?"
-    website += f"issue_code={issue_code}"
-    website += f"&issue_date={issue_date.strftime('%Y-%m-%d')}"
+    website += f"issue\_code={issue_code}"
+    website += f"&issue\_date={issue_date.strftime('%Y-%m-%d')}"
 
     message = "*Announcement Date:* " + announcement_date.strftime(
         "%Y/%m/%d") + "\n"
