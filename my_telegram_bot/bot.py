@@ -168,7 +168,7 @@ def _tbills() -> str:
         isin_code=last_tbill["ISIN Code"],
     )
 
-    message = "*Previous 6 mth T-Bills*\n\n" + message
+    message = "*Previous 6 months T-Bill*\n\n" + message
 
     return message
 
@@ -181,8 +181,8 @@ def get_tbills_msg(announcement_date: datetime.datetime,
 
     website = "https://www.mas.gov.sg/bonds-and-bills" + \
         "/auctions-and-issuance-calendar/auction-t-bill?"
-    website += f"issue_code={issue_code}"
-    website += f"&issue_date={issue_date.strftime('%Y-%m-%d')}"
+    website += f"issue\\_code={issue_code}"
+    website += f"&issue\\_date={issue_date.strftime('%Y-%m-%d')}"
 
     message = "*Announcement Date:* " + announcement_date.strftime(
         "%Y/%m/%d") + "\n"
