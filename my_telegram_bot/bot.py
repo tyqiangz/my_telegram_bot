@@ -101,11 +101,19 @@ def construct_leetcode_msg(title: str, date: str, link: str, difficulty: str):
     leetcode_base_url = "https://leetcode.com"
 
     assert link[0] == "/", "`link` should start with a '/' character"
+    assert difficulty in ["Easy", "Medium", "Hard"]
+
+    if difficulty == "Easy":
+        difficulty_emoji = "🟩"
+    elif difficulty == "Medium":
+        difficulty_emoji = "🟨"
+    elif difficulty == "Hard":
+        difficulty_emoji = "🟥"
 
     message = "👨‍💻*LC Daily Question*👩‍💻\n"
     message += f"*Date:* {date}\n"
     message += f"*Title:* {title}\n"
-    message += f"*Difficulty:* {difficulty}\n"
+    message += f"*Difficulty:* {difficulty} {difficulty_emoji}\n"
     message += leetcode_base_url + link
     return message
 
@@ -180,9 +188,6 @@ def get_tbills_msg(announcement_date: datetime.datetime,
         "%Y/%m/%d") + "\n"
     message += "*Auction Date:* " + auction_date.strftime("%Y/%m/%d") + "\n"
     message += "*Issue Date:* " + issue_date.strftime("%Y/%m/%d") + "\n"
-    message += "*Maturity  Date:* " + maturity_date.strftime("%Y/%m/%d") + "\n"
-    message += "*issue_code:* " + issue_code + "\n"
-    message += "*ISIN code:* " + isin_code + "\n"
     message += "*Website:* " + website
 
     return message
