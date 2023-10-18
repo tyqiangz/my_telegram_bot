@@ -30,7 +30,7 @@ Resources:
         AuthType: NONE
       Policies:
       # Give the Lambda service access to read from S3 buckets
-      - AmazonS3ReadOnlyAccessInfo
+      - AmazonS3ReadOnlyAccess
       
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
